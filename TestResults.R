@@ -16,3 +16,6 @@ colnames(results)[1:2]=c("Time Series","Transform")
 ## Remove % symbols, cast as numeric.
 results$KNN.Train %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numeric()
 results$KNN.Test %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numeric()
+
+## Rename Series Names to something more informative.
+results[!grepl(pattern = '(Mirroring)|(Haar Wavelet)|(Daubechies Wavelet)',results$Transform),2]="Raw"
