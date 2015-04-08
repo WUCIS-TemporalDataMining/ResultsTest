@@ -20,3 +20,14 @@ results$KNN.Test %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numer
 
 ## Rename Series Names to something more informative.
 results[!grepl(pattern = '(Mirroring)|(Haar Wavelet)|(Daubechies Wavelet)',results$Transform),2]="Original"
+
+## Create the factor structure needed for ANOVA
+results$Transform = as.factor(results$Transform)
+aovmod = aov(KNN.Test~Transform,data = results)
+
+## Type I Summary
+summary(aovmod)
+
+## Print Type III residual SS
+drop1(aovmod,~.,test="F")
+
