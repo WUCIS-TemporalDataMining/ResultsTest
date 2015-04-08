@@ -11,11 +11,11 @@ results <- read.csv("C:/Users/rrutherf/Downloads/Results - Sheet1.csv", stringsA
 results=cbind(name=results[rep(seq(1,172,4),each=4),1],results)
 
 ## Set names.
-colnames(results)[1:2]=c("Time Series","Transform")
+colnames(results)[1:2]=c("Dataset","Transform")
 
 ## Remove % symbols, cast as numeric.
 results$KNN.Train %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numeric()
 results$KNN.Test %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numeric()
 
 ## Rename Series Names to something more informative.
-results[!grepl(pattern = '(Mirroring)|(Haar Wavelet)|(Daubechies Wavelet)',results$Transform),2]="Raw"
+results[!grepl(pattern = '(Mirroring)|(Haar Wavelet)|(Daubechies Wavelet)',results$Transform),2]="Original"
