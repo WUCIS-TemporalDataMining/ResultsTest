@@ -46,4 +46,5 @@ summary(aovmod)
 ## Print Type III residual SS
 drop1(aovmod,~.,test="F")
 
-
+## Non-parametric Kruskal-Wallis Rank Sum Test
+kruskal.test(x = results$KNN.Test,g=results$Transform,data=results)
