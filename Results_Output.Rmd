@@ -61,6 +61,9 @@ Set up for ANOVAs.
 ```{r,echo=FALSE}
 ## Create the factor structure needed for ANOVA
 results$Transform = as.factor(results$Transform)
+
+## Re-order factors.
+results$Transform = factor(results$Transform,levels(results$Transform)[c(4,3,2,1)])
 aovmod = aov(KNN.Test~Transform,data = results)
 
 ```
@@ -76,4 +79,3 @@ drop1(aovmod,~.,test="F")
 ## Non-parametric Kruskal-Wallis Rank Sum Test
 kruskal.test(x = results$KNN.Test,g=results$Transform,data=results)
 ```
-

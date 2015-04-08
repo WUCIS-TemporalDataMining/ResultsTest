@@ -38,6 +38,9 @@ ggQQ(lm(KNN.Test~Transform,data=results))
 
 ## Create the factor structure needed for ANOVA
 results$Transform = as.factor(results$Transform)
+## Re-order factors.
+results$Transform = factor(results$Transform,levels(results$Transform)[c(4,3,2,1)])
+
 aovmod = aov(KNN.Test~Transform,data = results)
 
 ## Type I Summary
