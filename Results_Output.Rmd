@@ -36,12 +36,16 @@ results$KNN.Test %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numer
 ## Rename Series Names to something more informative.
 results[!grepl(pattern = '(Mirroring)|(Haar Wavelet)|(Daubechies Wavelet)',results$Transform),2]="Original"
 
+## Create factors.
+results$Transform = as.factor(results$Transform)
+## Re-order factors.
+results$Transform = factor(results$Transform,levels(results$Transform)[c(4,3,2,1)])
 ```
 
 Numerical Summary
 ```{r}
 ## Numerical Summary:
-results %>% select(Transform,KNN.Test) %>% group_by(Transform) %>% summarise_each(funs(mean,sd,skewness))
+results %>% select(Transform,KNN.Test) %>% group_by(Transform) %>% summarise_each(funs(mean,sd,skewness)) %>% arrange(Transform) 
 ```
 
 Print Plots:
