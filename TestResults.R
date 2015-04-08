@@ -21,6 +21,9 @@ results$KNN.Test %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numer
 ## Rename Series Names to something more informative.
 results[!grepl(pattern = '(Mirroring)|(Haar Wavelet)|(Daubechies Wavelet)',results$Transform),2]="Original"
 
+## QQ Normality Plots
+qplot(sample=results$KNN.Test,data=results,stat="qq",main = "QQ Plots",xlab = "Theoretical",ylab = "Observations",facets=~Transform)
+
 ## Create the factor structure needed for ANOVA
 results$Transform = as.factor(results$Transform)
 aovmod = aov(KNN.Test~Transform,data = results)
