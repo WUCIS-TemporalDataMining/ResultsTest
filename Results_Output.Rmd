@@ -1,0 +1,79 @@
+---
+title: "TestResults_Output"
+author: "Rob"
+date: "04/08/2015"
+output: html_document
+---
+
+
+Load libraries.
+```{r}
+
+library(stringr)
+library(magrittr)
+library(ggplot2)
+library(dplyr)
+library(e1071)
+source("ggQQ.R")
+
+```
+
+Read in and munge data.
+
+```{r, echo=FALSE}
+results <- read.csv("Results - Sheet1.csv", stringsAsFactors=FALSE)
+
+## Add consistent row-names.
+results=cbind(name=results[rep(seq(1,172,4),each=4),1],results)
+
+## Set names.
+colnames(results)[1:2]=c("Dataset","Transform")
+
+## Remove % symbols, cast as numeric.
+results$KNN.Train %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numeric()
+results$KNN.Test %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numeric()
+
+## Rename Series Names to something more informative.
+results[!grepl(pattern = '(Mirroring)|(Haar Wavelet)|(Daubechies Wavelet)',results$Transform),2]="Original"
+
+```
+
+Numerical Summary
+```{r}
+## Numerical Summary:
+results %>% select(Transform,KNN.Test) %>% group_by(Transform) %>% summarise_each(funs(mean,sd,skewness))
+```
+
+Print Plots:
+```{r,echo=FALSE}
+## Boxplot
+ggplot(results,aes(Transform,KNN.Test))+geom_boxplot()+ylab("Test % Accuracy")
+
+## Show histograms of each Test Set.
+ggplot(results,aes(x=KNN.Test))+geom_histogram()+facet_wrap(~Transform)+ylab("Frequency")+xlab("Test % Accuracy")
+
+## QQ Normality Plots
+ggQQ(lm(KNN.Test~Transform,data=results))
+
+```
+
+Set up for ANOVAs.
+```{r,echo=FALSE}
+## Create the factor structure needed for ANOVA
+results$Transform = as.factor(results$Transform)
+aovmod = aov(KNN.Test~Transform,data = results)
+
+```
+
+Print Model Summaries
+```{r}
+## Type I Summary
+summary(aovmod)
+
+## Print the more typical Type III residual SS
+drop1(aovmod,~.,test="F")
+
+## Non-parametric Kruskal-Wallis Rank Sum Test
+kruskal.test(x = results$KNN.Test,g=results$Transform,data=results)
+```
+
