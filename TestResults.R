@@ -31,7 +31,7 @@ ggplot(results,aes(Transform,KNN.Test))+geom_boxplot()+ylab("Test % Accuracy")
 ggplot(results,aes(x=KNN.Test))+geom_histogram()+facet_wrap(~Transform)+ylab("Frequency")+xlab("Test % Accuracy")
 
 ## Numerical Summary:
-results %>% select(Transform,KNN.Test) %>% group_by(Transform) %>% summarise_each(funs(mean,sd,skewness)
+results %>% select(Transform,KNN.Test) %>% group_by(Transform) %>% summarise_each(funs(mean,sd,skewness))
 
 ## QQ Normality Plots
 ggQQ(lm(KNN.Test~Transform,data=results))
