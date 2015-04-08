@@ -3,6 +3,7 @@
 ##
 
 library(stringr)
+library(magrittr)
 
 results <- read.csv("C:/Users/rrutherf/Downloads/Results - Sheet1.csv", stringsAsFactors=FALSE)
 
