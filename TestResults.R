@@ -10,7 +10,9 @@ results <- read.csv("C:/Users/rrutherf/Downloads/Results - Sheet1.csv", stringsA
 ## Add consistent row-names.
 results=cbind(name=results[rep(seq(1,172,4),each=4),1],results)
 
+## Set names.
+colnames(results)[1:2]=c("Time Series","Transform")
+
 ## Remove % symbols, cast as numeric.
 results$KNN.Train %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numeric()
 results$KNN.Test %<>% str_replace(.,pattern = '%',replacement = '') %>% as.numeric()
-
