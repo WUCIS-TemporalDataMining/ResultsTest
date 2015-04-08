@@ -24,6 +24,8 @@ results[!grepl(pattern = '(Mirroring)|(Haar Wavelet)|(Daubechies Wavelet)',resul
 ## QQ Normality Plots
 qplot(sample=results$KNN.Test,data=results,stat="qq",main = "QQ Plots",xlab = "Theoretical",ylab = "Observations",facets=~Transform)
 
+
+
 ## Create the factor structure needed for ANOVA
 results$Transform = as.factor(results$Transform)
 aovmod = aov(KNN.Test~Transform,data = results)
