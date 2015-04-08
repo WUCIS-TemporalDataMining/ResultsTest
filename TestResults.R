@@ -4,6 +4,7 @@
 
 library(stringr)
 library(magrittr)
+library(ggplot2)
 
 results <- read.csv("C:/Users/rrutherf/Downloads/Results - Sheet1.csv", stringsAsFactors=FALSE)
 
