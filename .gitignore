@@ -11,3 +11,4 @@ vignettes/*.pdf
 .Rproj.user
 ResultsTest.Rproj
 .RData
+Results_Output.html
