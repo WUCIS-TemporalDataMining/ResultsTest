@@ -94,3 +94,37 @@ kruskal.test(x = results$KNN.Test,g=results$Transform,data=results)
 ## data:  results$KNN.Test and results$Transform
 ## Kruskal-Wallis chi-squared = 0.0332, df = 3, p-value = 0.9984
 ```
+
+#Wavelet Matrices:
+
+##Haar Matrix:
+$$
+\mathbf{H_8}\mathbf{s} = 
+\begin{bmatrix}
+ 1/2 & 1/2 & 0 & 0 & 0 & 0 & 0 & 0 \\
+-1/2 & 1/2 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+ 0 & 0 & 1/2 & 1/2 & 0 & 0 & 0 & 0 \\
+0 & 0 & -1/2 & 1/2 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 1/2 & 1/2 & 0 & 0 \\ 
+ 0 & 0 & 0 & 0 & -1/2 & 1/2 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & 1/2 & 1/2 \\ 
+0 & 0 & 0 & 0 & 0 & 0 & -1/2 & 1/2
+\end{bmatrix}
+\begin{bmatrix}
+s_1 \\ s_2 \\ s_3 \\ s_4 \\ s_5 \\ s_6 \\ s_7 \\ s_8
+\end{bmatrix} =
+\begin{bmatrix}
+ (s_1 + s_2)/2 \\ 
+ (s_2 - s_1)/2 \\ 
+ (s_3 + s_4)/2 \\ 
+ (s_4 - s_3)/2 \\  
+ (s_5 + s_6)/2 \\ 
+ (s_6 - s_5)/2 \\ 
+ (s_7 + s_8)/2 \\ 
+ (s_8 - s_7)/2
+ \end{bmatrix} = 
+ \begin{bmatrix}
+ Coef_1 \\ Detail_1 \\ Coef_2 \\ Detail_2 \\ Coef_3 \\ Detail_3 \\ Coef_4 \\ Detail_4
+ \end{bmatrix}
+$$
+
