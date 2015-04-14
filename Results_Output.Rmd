@@ -89,7 +89,7 @@ kruskal.test(x = results$KNN.Test,g=results$Transform,data=results)
 
 #Wavelet Matrices:
 
-##Haar Matrix:
+###Haar Matrix:
 $$
 \mathbf{H_8}\mathbf{s} = 
 \begin{bmatrix}
