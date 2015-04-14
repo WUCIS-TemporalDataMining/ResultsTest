@@ -95,7 +95,7 @@ kruskal.test(x = results$KNN.Test,g=results$Transform,data=results)
 ## Kruskal-Wallis chi-squared = 0.0332, df = 3, p-value = 0.9984
 ```
 
-#Wavelet Matrices:
+#First Iteration Wavelet Matrices:
 
 ###Haar Matrix:
 $$
@@ -128,3 +128,23 @@ s_1 \\ s_2 \\ s_3 \\ s_4 \\ s_5 \\ s_6 \\ s_7 \\ s_8
  \end{bmatrix}
 $$
 
+###Daubechies 4 Matrix:
+$$
+\mathbf{D4_8}\mathbf{s} = 
+\begin{bmatrix}
+\frac{1+\sqrt{3}}{4\sqrt{2}} & \frac{3+\sqrt{3}}{4\sqrt{2}} & \frac{3-\sqrt{3}}{4\sqrt{2}} & \frac{1-\sqrt{3}}{4\sqrt{2}} & 0 & 0 & 0 & 0 \\
+\frac{1-\sqrt{3}}{4\sqrt{2}} & \frac{-3+\sqrt{3}}{4\sqrt{2}} & \frac{3+\sqrt{3}}{4\sqrt{2}} &  \frac{-1-\sqrt{3}}{4\sqrt{2}} & 0 & 0 & 0 & 0 \\ 
+0 & 0 & \frac{1+\sqrt{3}}{4\sqrt{2}} & \frac{3+\sqrt{3}}{4\sqrt{2}} & \frac{3-\sqrt{3}}{4\sqrt{2}} & \frac{1-\sqrt{3}}{4\sqrt{2}} & 0 & 0 \\
+0 & 0 & \frac{1-\sqrt{3}}{4\sqrt{2}} & \frac{-3+\sqrt{3}}{4\sqrt{2}} & \frac{3+\sqrt{3}}{4\sqrt{2}} &  \frac{-1-\sqrt{3}}{4\sqrt{2}} & 0 & 0\\ 
+0 & 0 & 0 & 0 & \frac{1+\sqrt{3}}{4\sqrt{2}} & \frac{3+\sqrt{3}}{4\sqrt{2}} & \frac{3-\sqrt{3}}{4\sqrt{2}} & \frac{1-\sqrt{3}}{4\sqrt{2}} \\
+0 & 0 & 0 & 0 & \frac{1-\sqrt{3}}{4\sqrt{2}} & \frac{-3+\sqrt{3}}{4\sqrt{2}} & \frac{3+\sqrt{3}}{4\sqrt{2}} &  \frac{-1-\sqrt{3}}{4\sqrt{2}}\\ 
+\frac{3-\sqrt{3}}{4\sqrt{2}} & \frac{1-\sqrt{3}}{4\sqrt{2}} & 0 & 0 & 0 & 0 & \frac{1+\sqrt{3}}{4\sqrt{2}} & \frac{3+\sqrt{3}}{4\sqrt{2}} \\
+ \frac{3+\sqrt{3}}{4\sqrt{2}} &  \frac{-1-\sqrt{3}}{4\sqrt{2}} & 0 & 0 &  0 & 0 &  \frac{1-\sqrt{3}}{4\sqrt{2}} & \frac{-3+\sqrt{3}}{4\sqrt{2}} 
+\end{bmatrix}
+\begin{bmatrix}
+s_1 \\ s_2 \\ s_3 \\ s_4 \\ s_5 \\ s_6 \\ s_7 \\ s_8
+\end{bmatrix} =
+ \begin{bmatrix}
+ Coef_1 \\ Detail_1 \\ Coef_2 \\ Detail_2 \\ Coef_3 \\ Detail_3 \\ Coef_4 \\ Detail_4
+ \end{bmatrix}
+$$
