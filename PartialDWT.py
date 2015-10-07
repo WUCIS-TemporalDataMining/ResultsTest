@@ -122,7 +122,7 @@ def plot(data, w, title):
         #print len(data), len(x), len(data) / (2**(i+1))
         ax = pylab.subplot(len(rec_a) + 1, 2, 3 + i * 2)
         ax.plot(y, 'r')
-        pylab.xlim(0, len(y) - 1)
+        pylab.xlim(0, 65)
         pylab.ylabel("Coef%d" % (i + 1))
         pylab.locator_params(axis = 'y', nbins = 5)
 
@@ -130,7 +130,7 @@ def plot(data, w, title):
     for i, y in enumerate(rec_d):
         ax = pylab.subplot(len(rec_d) + 1, 2, 4 + i * 2)
         ax.plot(y, 'g')
-        pylab.xlim(0, len(y) - 1)
+        pylab.xlim(0, 65)
         #pylab.ylim(min(0,1.4*min(x)), max(0,1.4*max(x)))
         pylab.ylabel("D%d" % (i + 1))
         pylab.locator_params(axis = 'y', nbins = 5)
